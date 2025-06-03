@@ -135,6 +135,9 @@ function draw() {
       ellipse(rightTipX, rightTipY, 30, 30);
     }
 
+    console.log('leftTip', leftTip.score, leftTip.position);
+    console.log('rightTip', rightTip.score, rightTip.position);
+
     // 檢查左手指尖是否碰到左選項
     if (
       leftTip.score > 0.2 &&
