@@ -19,12 +19,6 @@ let questions = [
   { q: "教育科技系有開設哪一門與 AI 有關的課程？", left: "AI 遊戲設計", right: "機器學習與教育應用", answer: "left" }
 ];
 
-// 選項區域座標
-const optionY = 240; // height / 2
-const optionHeight = 80;
-const optionLeft = { x: 0, y: optionY, w: 320, h: optionHeight }; // 左半邊
-const optionRight = { x: 320, y: optionY, w: 320, h: optionHeight }; // 右半邊
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   video = createCapture(VIDEO, () => {
@@ -120,7 +114,6 @@ function draw() {
   textAlign(CENTER, CENTER);
   text(q.right, width * 3 / 4, optionRight.y + optionRight.h / 2);
 
-  // 只在 showResult 為 false 時偵測作答
   if (poses.length > 0) {
     let pose = poses[0].pose;
     let keypoints = pose.keypoints;
