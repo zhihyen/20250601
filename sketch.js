@@ -51,10 +51,8 @@ function modelReady() {
 }
 
 function draw() {
-  // 讓背景單色填滿整個視窗
   background(220);
 
-  // 攝影機畫面鋪滿整個視窗
   if (videoReady && video.loadedmetadata) {
     push();
     translate(width, 0);
@@ -74,7 +72,6 @@ function draw() {
   textAlign(RIGHT, TOP);
   text("分數: " + score, width - 10, 10);
 
-  // ====== 只在沒偵測到人體時顯示簡單提示（不再畫手腕圖示）======
   if (poses.length === 0) {
     fill(255, 255, 0, 200);
     noStroke();
@@ -98,14 +95,18 @@ function draw() {
   textAlign(CENTER, CENTER);
   text(q.q, width / 2, height / 2 - 60);
 
-  // ===== 提示手擺放在可被偵測到的位置 =====
   fill(255, 255, 0, 180);
   noStroke();
   textSize(20);
   textAlign(CENTER, CENTER);
   text("請將手指放在畫面內，指尖圓點出現即可作答", width / 2, 40);
 
-  // 畫出選項區域
+  // ==== 讓選項區域根據視窗大小自動調整 ====
+  let optionY = height / 2;
+  let optionHeight = 80;
+  let optionLeft = { x: 0, y: optionY, w: width / 2, h: optionHeight };
+  let optionRight = { x: width / 2, y: optionY, w: width / 2, h: optionHeight };
+
   fill(0, 100, 255, 180);
   rect(optionLeft.x, optionLeft.y, optionLeft.w, optionLeft.h);
   fill(255);
