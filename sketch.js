@@ -125,12 +125,12 @@ function draw() {
     let pose = poses[0].pose;
     let keypoints = pose.keypoints;
 
-    // 只用左手或右手中指指尖偵測即可
+    // 取得鏡像後的指尖座標
     let leftTip = keypoints[8];
     let rightTip = keypoints[12];
-    let leftTipX = leftTip.position.x;
+    let leftTipX = width - leftTip.position.x;
     let leftTipY = leftTip.position.y;
-    let rightTipX = rightTip.position.x;
+    let rightTipX = width - rightTip.position.x;
     let rightTipY = rightTip.position.y;
 
     // 只顯示偵測到的其中一個指尖點（優先左手，否則右手）
